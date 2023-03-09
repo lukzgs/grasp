@@ -11,6 +11,7 @@ Para instalar o python 3.8 no linux:
 - sudo apt install software-properties-common
 - sudo add-apt-repository ppa:deadsnakes/ppa
 - sudo apt install python3.8
+- sudo apt install python3-pip
 
 
 Para rodar o programa:
