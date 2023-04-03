@@ -1,14 +1,14 @@
 import math
 import random
+import time
 
 # Define a function to check if a number is a perfect square
 def is_perfect_square(n):
     """Returns True if n is a perfect square, False otherwise."""
-
     return int(math.sqrt(n)) ** 2 == n
 
 # Define a function to count the number of pairs of consecutive elements in a sequence whose sum is a perfect square
-def count_pairs(sequence):    
+def count_pairs(sequence):
     """Returns the number of pairs of consecutive elements in sequence whose sum is a perfect square."""
 
     count = 0
@@ -19,6 +19,7 @@ def count_pairs(sequence):
 
 # Define the GRASP algorithm to find the sequence that maximizes the number of pairs of consecutive elements whose sum is a perfect square
 def grasp(sequence, max_iterations, k):
+    start_time = time.time()
     # Set the initial best solution and score
     best_solution = sequence
     best_score = count_pairs(sequence)
@@ -33,7 +34,7 @@ def grasp(sequence, max_iterations, k):
             index2 = random.randint(0, len(sequence) - 1)
             # Swap the elements at the chosen indices
             candidate_solution[index1], candidate_solution[index2] = candidate_solution[index2], candidate_solution[index1]
-        
+
         # Calculate the score of the candidate solution
         candidate_score = count_pairs(candidate_solution)
 
@@ -42,22 +43,9 @@ def grasp(sequence, max_iterations, k):
         if candidate_score > best_score:
             best_solution = candidate_solution
             best_score = candidate_score
-    
+
+    end_time = time.time()
     # Return the best solution found
-    return best_solution
-
-
-
-# if __name__ == '__main__':
-#     # Define the input sequence
-#     sequence = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-#     # Set the algorithm parameters
-#     max_iterations = 1000
-#     k = 9
-
-#     # Call the GRASP algorithm to find the solution
-#     best_sequence = grasp(sequence, max_iterations, k)
-
-#     # Print the result
-#     print(best_sequence)
+    elapsed_time = end_time - start_time
+    print("%.2f segundos" % elapsed_time)
+    return best_solution, best_score

@@ -18,7 +18,6 @@ Para rodar o programa:
 
 -python3 main.py
 
-
 Por:
 
 - Lucas Guaitanelli da Silveira
